@@ -45,9 +45,37 @@ Bedrock-Seite: `bedrock-resourcepack.mcpack` in
 gilt dort automatisch netzwerkweit fuer alle Bedrock-Spieler, unabhaengig
 davon, auf welchem Backend-Server sie gerade sind.
 
+## Testinhalt 1: Grosser Profil-Kopf (/stats)
+
+`assets/exd/items/profile_head_big.json` + `assets/exd/models/item/profile_head_big.json`
+- Eigener Namespace `exd`, NICHT `assets/minecraft/items/player_head.json`
+  ueberschrieben - sonst waeren ALLE Spielerkoepfe im Netzwerk (Crates,
+  Quests, Kopf-Sammlungen) betroffen, nicht nur der im Profil-Menue.
+- Basis 1:1 aus dem echten `assets/minecraft/models/item/template_skull.json`
+  (extrahiert aus dem offiziellen 1.21.11-Client-Jar), nur `display.gui.scale`
+  von `[1,1,1]` auf `[2.5,2.5,2.5]` erhoeht + `oversized_in_gui: true` in der
+  Item-Definition, damit der Kopf ueber die Slot-Grenze hinaus rendern darf.
+- Bleibt ein normaler `minecraft:special` / `minecraft:player_head`-Renderer
+  -> zeigt weiterhin das echte, aktuelle Skin des Spielers (kein statisches
+  Bild).
+- Anwendung: Skript/SkBee muss auf dem GUI-ItemStack die `item_model`-Component
+  auf `exd:profile_head_big` setzen (exakte SkBee-Syntax dafuer noch pruefen -
+  Component-Setzen ist in SkBee 3.22.0 vorhanden, Name/Expression noch nicht
+  verifiziert).
+- Layout-Konsequenz: die Slots rings um den Kopf im GUI muessen leer/frei
+  bleiben, sonst ueberlappt der vergroesserte Kopf sichtbar mit anderen Icons.
+- **Noch nicht ingame getestet** - `translation`/`scale`-Werte sind ein erster
+  Ansatz, muessen nach dem ersten Sichttest evtl. nachjustiert werden.
+
 ## Offene Punkte / naechste Schritte
 
-- Erster Testinhalt (ein GUI-Element + ein Sound) fehlt noch
+- Ersten Sound noch nicht angelegt (nur Platzhalter-Beispiel in `sounds.json`)
+- Grossen Profil-Kopf ingame testen und Scale/Translation feinjustieren
+- SkBee-Syntax zum Setzen der `item_model`-Component im Profil-Skript pruefen
+  und einbauen
 - PackSquash-Optimierung (Groesse, v. a. wegen Musik) noch nicht in die
   Pipeline eingebaut
 - Bedrock-Pack-Icon (`pack_icon.png`) fehlt noch im `bedrock-pack/`-Root
+- Bedrock-Seite: grosser Kopf betrifft nur Java - fuer Bedrock-Spieler muesste
+  das separat ueber das Bedrock-Pack geloest werden (dort gibt es keine
+  Live-Skin-Spezialrenderer wie bei Java, siehe fruehere Erklaerung)

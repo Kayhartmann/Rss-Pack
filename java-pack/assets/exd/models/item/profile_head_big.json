@@ -1,0 +1,33 @@
+{
+  "_comment": "Kopie von vanilla assets/minecraft/models/item/template_skull.json (extrahiert aus dem offiziellen 1.21.11-Client-Jar), nur 'display.gui' angepasst fuer groesseren Kopf im /stats-Menue. Alle anderen Kontexte (fixed/on_shelf/ground/thirdperson_righthand) unveraendert gelassen, damit Koepfe ausserhalb des Profil-GUIs normal aussehen. translation/rotation muessen nach dem ersten Ingame-Test evtl. nachjustiert werden, damit der Kopf zentriert im Slot-Bereich sitzt.",
+  "textures": {
+    "particle": "block/soul_sand"
+  },
+  "display": {
+    "gui": {
+      "rotation": [ 30, 45, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 2.5, 2.5, 2.5 ]
+    },
+    "fixed": {
+      "rotation": [ 0, 180, 0 ],
+      "translation": [ 0, 4, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "on_shelf": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 8, 0 ],
+      "scale": [ 2, 2, 2 ]
+    },
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.5, 0.5, 0.5 ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 45, 45, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.5, 0.5, 0.5 ]
+    }
+  }
+}

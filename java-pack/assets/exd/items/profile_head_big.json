@@ -1,0 +1,11 @@
+{
+  "_comment": "Eigene Item-Definition (NICHT assets/minecraft/items/player_head.json ueberschreiben - das wuerde ALLE Spielerkoepfe netzwerkweit vergroessern, auch in Crates/Quests/Kopf-Sammlungen). Wird gezielt nur auf das eine ItemStack im /stats-GUI angewendet, indem Skript/SkBee die item_model-Component dieses ItemStacks auf 'exd:profile_head_big' setzt. Struktur 1:1 aus dem echten vanilla assets/minecraft/items/player_head.json (1.21.11) uebernommen, nur 'base' auf unser eigenes Modell umgebogen und oversized_in_gui aktiviert.",
+  "oversized_in_gui": true,
+  "model": {
+    "type": "minecraft:special",
+    "base": "exd:item/profile_head_big",
+    "model": {
+      "type": "minecraft:player_head"
+    }
+  }
+}
