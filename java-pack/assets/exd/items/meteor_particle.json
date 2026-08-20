@@ -1,0 +1,7 @@
+{
+  "_comment": "Reines Icon-Item, nur Textur-Traeger fuer den Item-Partikel-Effekt (Meteoritenschauer-Variante). Hintergrund war im Original-PNG opak schwarz, wurde per Helligkeit-als-Alpha automatisiert transparent gemacht (Glut/Feuer-Look bleibt erhalten).",
+  "model": {
+    "type": "minecraft:model",
+    "model": "exd:item/meteor_particle"
+  }
+}
