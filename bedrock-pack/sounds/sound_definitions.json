@@ -1,0 +1,11 @@
+{
+  "format_version": "1.14.0",
+  "sound_definitions": {
+    "exd.boss.intro": {
+      "category": "hostile",
+      "sounds": [
+        "sounds/exd/boss_intro"
+      ]
+    }
+  }
+}

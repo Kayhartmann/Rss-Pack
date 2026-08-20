@@ -1,0 +1,8 @@
+{
+  "_comment": "Beispiel-Eintrag - eigenen Sound-Namen frei waehlen, Datei unter assets/minecraft/sounds/ ablegen, dann per Skript ueber 'play sound \"exd:boss.intro\"' abspielen. Diesen Kommentar-Key vor dem produktiven Einsatz entfernen.",
+  "exd.boss.intro": {
+    "sounds": [
+      "exd/boss_intro"
+    ]
+  }
+}

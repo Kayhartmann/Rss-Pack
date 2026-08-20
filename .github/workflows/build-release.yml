@@ -1,0 +1,58 @@
+name: Build & Release Resource Packs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "java-pack/**"
+      - "bedrock-pack/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Zip Java pack
+        working-directory: java-pack
+        run: zip -r ../java-resourcepack.zip . -x ".gitkeep" -x "**/.gitkeep"
+
+      - name: Compute Java pack SHA1 (lowercase)
+        id: hash
+        run: |
+          HASH=$(sha1sum java-resourcepack.zip | awk '{print tolower($1)}')
+          echo "sha1=$HASH" >> "$GITHUB_OUTPUT"
+          echo "$HASH" > java-resourcepack.zip.sha1
+          echo "Java pack SHA1: $HASH" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Zip Bedrock pack (.mcpack)
+        working-directory: bedrock-pack
+        run: zip -r ../bedrock-resourcepack.mcpack . -x ".gitkeep" -x "**/.gitkeep"
+
+      - name: Create/update release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Resource Pack (auto-build)"
+          make_latest: true
+          body: |
+            Automatisch gebaut aus dem `main`-Branch.
+
+            **Java resource-pack.sha1 (lowercase, fuer server.properties):**
+            `${{ steps.hash.outputs.sha1 }}`
+
+            Direktlink fuer `resource-pack=` in server.properties (Lobby, Gameserver,
+            HappySMP, Bauserver - alle 4 identisch, da nur EIN gemeinsames Pack):
+            https://github.com/${{ github.repository }}/releases/download/latest/java-resourcepack.zip
+
+            Bedrock-Pack (in Geyser's `packs/`-Ordner auf dem PROXY legen):
+            https://github.com/${{ github.repository }}/releases/download/latest/bedrock-resourcepack.mcpack
+          files: |
+            java-resourcepack.zip
+            java-resourcepack.zip.sha1
+            bedrock-resourcepack.mcpack

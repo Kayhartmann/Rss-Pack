@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "EXD Network Resource Pack",
+    "description": "Bedrock-Gegenstueck zum Java-Pack (Lobby, Gameserver, HappySMP, Bauserver)",
+    "uuid": "29173de4-00db-408f-8d9e-9e82eeb9bed0",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "35cc6caa-7f62-493e-be9b-dd19da24c90e",
+      "version": [1, 0, 0]
+    }
+  ]
+}
