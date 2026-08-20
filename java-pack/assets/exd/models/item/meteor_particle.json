@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "exd:particle/meteor"
+    "layer0": "exd:item/meteor"
   }
 }
