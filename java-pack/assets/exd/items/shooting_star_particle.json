@@ -1,5 +1,4 @@
 {
-  "_comment": "Reines Icon-Item (kein 3D-Modell noetig), nur als Textur-Traeger fuer den Item-Partikel-Effekt (Sternschnuppenschauer). Wird nie als echtes Item gegeben, nur ItemStack-intern fuers Partikel-Spawnen benutzt.",
   "model": {
     "type": "minecraft:model",
     "model": "exd:item/shooting_star_particle"
